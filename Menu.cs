@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace EditorHtml
 {
@@ -15,7 +16,7 @@ namespace EditorHtml
             WriteOptions();
 
             var option = short.Parse(Console.ReadLine());
-
+            HandleMenuOptions(option);
         }
 
         //TELA
@@ -51,7 +52,7 @@ namespace EditorHtml
 
         static void Paipe()
         {
-            for (int lines = 0; lines <= 10; lines++)
+            for (int lines = 0; lines <= 15; lines++)
             {
                 Console.Write("|");
                 for (int i = 0; i <= 30; i++)
@@ -93,6 +94,47 @@ namespace EditorHtml
 
 
 
+        }
+
+        public static void HandleMenuOptions(short option)
+        {
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("\n");
+                    Console.WriteLine("     ------------");
+                    Console.WriteLine("    Abrindo editor");
+                    Thread.Sleep(1000);
+                    Editor.Show();
+                    break;
+
+                case 2:
+                    Console.WriteLine("\n");
+                    Console.WriteLine("     ------------");
+                    Console.WriteLine("       Abrindo o View");
+                    Thread.Sleep(1000);
+                    
+                    break;
+
+                case 0:
+                    {
+                        Console.Clear();
+                        Thread.Sleep(1500);
+                        Console.WriteLine("\n");
+                        Console.WriteLine("        Saindo, até mais!  :)");
+                        Environment.Exit(0);
+                        break;
+                    }
+
+                default:
+                    Console.WriteLine("\n");
+                    Console.WriteLine("      ------------");
+                    Console.WriteLine("     Opção invalida");
+                    Console.WriteLine("     Tente novamente");
+                    Thread.Sleep(1000);
+                    Show();
+                    break;
+            }
         }
     
     }

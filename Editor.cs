@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace EditorHtml
 {
@@ -12,15 +13,31 @@ namespace EditorHtml
             Console.ForegroundColor = ConsoleColor.Black;
 
             Console.Clear();
-            Console.WriteLine("MODO EDITOR");
-            Console.WriteLine("------------");
+            Console.WriteLine("                MODO EDITOR");
+            Console.WriteLine("         ------(ESC) para sair------");
+            Console.WriteLine("            **Comece a escrever**");
+            Console.WriteLine("\n");
 
             Start();
 
         }
         public static void Start()
         {
-            
+            var file = new StringBuilder();
+
+            do
+            {
+                file.Append(Console.ReadLine());
+                file.Append(Environment.NewLine);
+
+            }
+            while (Console.ReadKey().Key != ConsoleKey.Escape);
+
+            Console.WriteLine("                            ------------");
+            Console.WriteLine("                       Deseja salvar o arquivo?");
+            Console.ReadLine();
+
+            Viewer.Show(file.ToString());
         }
 
     }
